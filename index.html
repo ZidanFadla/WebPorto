@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Saya</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts Modern -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Particles.js untuk background interaktif -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0a192f',
+                        secondary: '#112240',
+                        accent: '#64ffda',
+                        dark: '#020c1b',
+                    },
+                    fontFamily: {
+                        sans: ['Space Grotesk', 'sans-serif'],
+                        display: ['Syne', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        glow: {
+                            '0%': { boxShadow: '0 0 5px rgba(100, 255, 218, 0.5)' },
+                            '100%': { boxShadow: '0 0 20px rgba(100, 255, 218, 0.8)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .section-min-height {
+                min-height: calc(100vh - 68px);
+            }
+            .neon-text {
+                text-shadow: 0 0 5px #64ffda, 0 0 10px #64ffda;
+            }
+            .glass-card {
+                background: rgba(17, 34, 64, 0.6);
+                backdrop-filter: blur(12px);
+                border: 1px solid rgba(100, 255, 218, 0.2);
+                transition: all 0.3s ease;
+            }
+            .glass-card:hover {
+                background: rgba(17, 34, 64, 0.8);
+                border: 1px solid rgba(100, 255, 218, 0.4);
+                transform: translateY(-5px);
+            }
+            .tech-border {
+                border: 1px solid #64ffda;
+                box-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
+            }
+            .gradient-text {
+                background: linear-gradient(90deg, #64ffda, #00bfff);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+            
+            /* Tambahan untuk responsivitas */
+            .responsive-padding {
+                padding-left: max(1rem, env(safe-area-inset-left));
+                padding-right: max(1rem, env(safe-area-inset-right));
+            }
+            
+            .responsive-container {
+                width: 100%;
+                max-width: 100%;
+                overflow-x: hidden;
+            }
+            
+            /* Perbaikan untuk mobile */
+            @media (max-width: 640px) {
+                .mobile-text-adjust {
+                    font-size: 90%;
+                    line-height: 1.4;
+                }
+                
+                .mobile-padding {
+                    padding-left: 0.75rem;
+                    padding-right: 0.75rem;
+                }
+                
+                .mobile-margin {
+                    margin-left: 0.5rem;
+                    margin-right: 0.5rem;
+                }
+                
+                .mobile-section-spacing {
+                    margin-top: 2rem;
+                    margin-bottom: 2rem;
+                }
+                
+                /* Perbaikan untuk proyek di mobile */
+                .glass-card {
+                    margin-bottom: 1.5rem;
+                }
+                
+                iframe {
+                    min-height: 12rem;
+                }
+            }
+            
+            /* Perbaikan untuk iframe */
+            .figma-container {
+                position: relative;
+                width: 100%;
+                height: 0;
+                padding-bottom: 56.25%; /* Rasio 16:9 */
+                overflow: hidden;
+            }
+            
+            .figma-container iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border: none;
+            }
+            
+            /* Fix untuk iframe yang tidak muncul di beberapa browser */
+            iframe {
+                background-color: white;
+                border-radius: 8px;
+                width: 100%;
+                height: 100%;
+                min-height: 16rem; /* 64px */
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- AOS untuk animasi scroll -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Tambahkan link untuk Swiper.js di bagian head -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+</head>
+
+
+<!-- HEADER -->
+
+<body class="bg-dark text-gray-300 font-sans relative overflow-x-hidden">
+    <!-- Particles.js background container -->
+    <div id="particles-js" class="absolute inset-0 z-0"></div>
+
+    <!-- Cyber grid overlay -->
+    <div class="cyber-grid absolute inset-0 z-0 opacity-20"></div>
+    <header
+        class="bg-primary bg-opacity-60 backdrop-blur-lg text-gray-300 sticky top-0 z-50 border-b border-accent border-opacity-20">
+        <section class="max-w-7xl mx-auto p-4 flex justify-between items-center responsive-padding">
+            <h1 class="text-2xl font-display font-bold">
+                <span class="gradient-text">Portofolio</span><span class="text-accent">.</span>
+            </h1>
+            <div>
+                <button id="mobile-menu-button"
+                    class="text-3xl md:hidden focus:outline-none hover:text-accent transition-colors">
+                    ☰
+                </button>
+                <nav class="hidden md:block space-x-4 lg:space-x-8 text-lg font-medium" aria-label="main">
+                    <a href="#beranda"
+                        class="hover:text-accent transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-accent after:transition-all">Beranda</a>
+                    <a href="#tentang"
+                        class="hover:text-accent transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-accent after:transition-all">Tentang</a>
+                    <a href="#proyek"
+                        class="hover:text-accent transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-accent after:transition-all">Proyek</a>
+                    <a href="#sertifikat"
+                        class="hover:text-accent transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-accent after:transition-all">Sertifikat</a>
+                    <a href="#kontak"
+                        class="hover:text-accent transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-accent after:transition-all">Kontak</a>
+                </nav>
+            </div>
+        </section>
+    </header>
+
+    <section id="mobile-menu"
+        class="fixed top-0 left-0 right-0 bg-primary w-full h-full text-4xl flex-col justify-content-center origin-top animate-open-menu hidden z-50">
+        <button id="close-mobile-menu" class="absolute top-4 right-4 text-3xl text-gray-300 hover:text-accent">
+            ✕
+        </button>
+        <nav class="flex flex-col min-h-screen items-center py-8" aria-label="mobile">
+            <a href="#beranda" class="w-full text-center py-6 hover:text-accent">Beranda</a>
+            <a href="#tentang" class="w-full text-center py-6 hover:text-accent">Tentang</a>
+            <a href="#proyek" class="w-full text-center py-6 hover:text-accent">Proyek</a>
+            <a href="#sertifikat" class="w-full text-center py-6 hover:text-accent">Sertifikat</a>
+            <a href="#kontak" class="w-full text-center py-6 hover:text-accent">Kontak</a>
+        </nav>
+    </section>
+
+    <main class="max-w-7xl mx-auto relative z-10">
+        <section id="beranda"
+            class="flex flex-col-reverse justify-center sm:flex-row p-4 sm:p-6 items-center gap-6 sm:gap-8 mb-8 sm:mb-12 section-min-height responsive-padding">
+            <article class="sm:w-1/2" data-aos="fade-right" data-aos-duration="1000">
+                <div class="mb-4 flex items-center">
+                    <div class="h-px w-12 bg-accent mr-4"></div>
+                    <span class="text-accent font-mono">Halo, saya</span>
+                </div>
+                <h2 class="max-w-md text-4xl sm:text-5xl font-display font-bold text-center sm:text-left mb-2">
+                    <span class="text-gray-100">Zidan Fadla</span>
+                </h2>
+                <h3
+                    class="text-2xl sm:text-3xl font-display font-bold text-center sm:text-left mb-4 sm:mb-6 gradient-text">
+                    Ahfandani
+                </h3>
+                <p class="max-w-md text-xl sm:text-2xl mt-4 text-center sm:text-left text-gray-400">
+                    <span class="typing-text"></span><span class="typing-cursor">|</span>
+                </p>
+                <div class="mt-6 sm:mt-8 flex flex-wrap gap-4 justify-center sm:justify-start">
+                    <a href="#proyek"
+                        class="px-5 sm:px-6 py-3 bg-accent text-primary font-bold rounded-md hover:bg-opacity-80 transition-all transform hover:scale-105 hover:shadow-lg hover:shadow-accent/20">Lihat
+                        Proyek</a>
+                    <a href="#kontak"
+                        class="px-5 sm:px-6 py-3 border border-accent text-accent font-bold rounded-md hover:bg-accent hover:text-primary transition-all transform hover:scale-105 hover:shadow-lg hover:shadow-accent/20">Hubungi
+                        Saya</a>
+                </div>
+            </article>
+            <div class="sm:w-1/2 relative w-3/4 sm:w-auto" data-aos="fade-left" data-aos-duration="1000">
+                <div class="absolute inset-0 bg-accent rounded-full opacity-10 blur-xl"></div>
+                <div class="relative animate-float">
+                    <div
+                        class="absolute -inset-0.5 bg-gradient-to-r from-accent to-blue-400 rounded-full blur opacity-30 animate-glow">
+                    </div>
+                    <img class="w-full max-w-xs sm:max-w-md mx-auto rounded-full tech-border relative z-1"
+                        src="Asset/Foto Zidan.jpg" alt="Foto Profil" />
+                </div>
+            </div>
+        </section>
+
+
+        <!-- TENTANG SAYA -->
+
+        <section id="tentang" class="p-6 my-12 section-min-height relative">
+            <div class="absolute -right-20 -top-20 w-64 h-64 bg-accent opacity-5 rounded-full blur-3xl"></div>
+            <div class="absolute -left-20 -bottom-20 w-64 h-64 bg-blue-400 opacity-5 rounded-full blur-3xl"></div>
+
+            <div class="relative">
+                <div class="flex items-center mb-8" data-aos="fade-right">
+                    <span class="text-accent font-mono text-lg mr-4">01.</span>
+                    <h2 class="text-4xl font-display font-bold sm:text-5xl text-gray-100">Tentang Saya</h2>
+                    <div class="h-px flex-grow bg-gray-700 ml-4"></div>
+                </div>
+
+                <div class="max-w-7xl mx-auto text-justify text-lg text-gray-400 glass-card p-8 rounded-xl"
+                    data-aos="fade-up">
+                    <p>
+                        Halo! Saya Zidan Fadla, seorang mahasiswa yang memiliki antusiasme mendalam pada dua dunia yang
+                        saling melengkapi yaitu Web Development dan Desain UI/UX. Bagi saya, sebuah website atau
+                        aplikasi bukanlah
+                        sekadar produk digital ini adalah jembatan utama yang menghubungkan sebuah visi dengan
+                        penggunanya.
+                    </p>
+                    <p class="mt-4">
+                        Sebagai seorang desainer UI/UX, saya terobsesi untuk memahami "mengapa". Mengapa pengguna
+                        mengklik
+                        tombol ini? Apa yang mereka rasakan saat bernavigasi? Saya menuangkan rasa penasaran ini ke
+                        dalam
+                        desain yang tidak hanya indah secara visual, tetapi juga intuitif.
+                    </p>
+                    <p class="mt-4">
+                        Namun, ide desain yang brilian akan sia-sia jika tidak dapat diwujudkan dengan sempurna. Di
+                        sinilah kecintaan saya pada Web Development berperan. Saya menikmati proses mengubah prototipe
+                        visual menjadi produk nyata yang fungsional, responsif, dan andal. Keahlian dalam HTML, CSS,
+                        JavaScript, serta [sebutkan framework/teknologi lain yang Anda kuasai, misal: React atau
+                        Node.js] memungkinkan saya untuk memastikan bahwa visi desain tidak hilang dalam proses
+                        pengembangan.
+                    </p>
+                    <p class="mt-4">
+                        Saya percaya bahwa desain yang baik bukanlah tentang menciptakan sesuatu yang indah, tetapi
+                        tentang
+                        menciptakan sesuatu yang bermanfaat. Saya percaya bahwa setiap desain adalah sebuah kesempatan
+                        untuk
+                        membangun hubungan yang lebih dekat dengan pengguna.
+                    </p>
+                    <h3 class="text-2xl font-display font-bold mt-8 mb-4 gradient-text">Fondasi Utama Saya: Kepercayaan
+                    </h3>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                        <div class="glass-card p-6 rounded-xl" data-aos="fade-up" data-aos-delay="100">
+                            <div class="text-accent text-3xl mb-4"><i class="fas fa-comments"></i></div>
+                            <h4 class="text-xl font-bold text-gray-100 mb-2">Komunikasi Transparan</h4>
+                            <p class="text-gray-400">Dialog terbuka untuk memahami tujuan dan memberikan progres yang
+                                jelas di setiap tahap.</p>
+                        </div>
+
+                        <div class="glass-card p-6 rounded-xl" data-aos="fade-up" data-aos-delay="200">
+                            <div class="text-accent text-3xl mb-4"><i class="fas fa-award"></i></div>
+                            <h4 class="text-xl font-bold text-gray-100 mb-2">Komitmen pada Kualitas</h4>
+                            <p class="text-gray-400">Kode yang bersih, desain yang teruji, dan produk akhir yang dapat
+                                dibanggakan bersama.</p>
+                        </div>
+
+                        <div class="glass-card p-6 rounded-xl" data-aos="fade-up" data-aos-delay="300">
+                            <div class="text-accent text-3xl mb-4"><i class="fas fa-users"></i></div>
+                            <h4 class="text-xl font-bold text-gray-100 mb-2">Fokus pada Pengguna</h4>
+                            <p class="text-gray-400">Kepercayaan dari pelanggan tumbuh ketika produk berhasil
+                                memenangkan kepercayaan pengguna akhir.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- PROYEK -->
+
+        <section id="proyek" class="p-4 sm:p-6 my-8 sm:my-12 section-min-height relative responsive-padding">
+            <div class="absolute -left-20 top-40 w-64 h-64 bg-accent opacity-5 rounded-full blur-3xl"></div>
+
+            <div class="relative">
+                <div class="flex items-center mb-8 sm:mb-12" data-aos="fade-right">
+                    <span class="text-accent font-mono text-base sm:text-lg mr-3 sm:mr-4">02.</span>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-gray-100">Proyek</h2>
+                    <div class="h-px flex-grow bg-gray-700 ml-3 sm:ml-4"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Proyek 1 -->
+                    <div class="glass-card rounded-xl overflow-hidden shadow-lg" data-aos="fade-up"
+                        data-aos-delay="100">
+                        <div class="relative group">
+                            <img src="Asset/ZidanKitchen.gif" alt="Zidan Kitchen Project"
+                                class="w-full h-64 sm:h-72 object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                                <div class="p-4">
+                                    <div class="flex gap-3 mb-2">
+                                        <a href="https://zidankitchen.netlify.app/" target="_blank"
+                                            class="text-accent hover:text-white transition-colors">
+                                            <i class="fas fa-external-link-alt"></i>
+                                        </a>
+                                        <a href="https://github.com/zidanfadla/ZidanKitchen" target="_blank"
+                                            class="text-accent hover:text-white transition-colors">
+                                            <i class="fab fa-github"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-display font-bold mb-2 gradient-text">Zidan Kitchen</h3>
+                            <p class="text-gray-400 mb-4 text-sm sm:text-base">Website restoran dengan fitur menu
+                                interaktif, reservasi meja, dan galeri foto makanan.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span
+                                    class="px-2 py-1 text-xs bg-secondary border border-accent/30 rounded-full text-accent">HTML</span>
+                                <span
+                                    class="px-2 py-1 text-xs bg-secondary border border-accent/30 rounded-full text-accent">CSS</span>
+                                <span
+                                    class="px-2 py-1 text-xs bg-secondary border border-accent/30 rounded-full text-accent">JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Proyek 2 -->
+                    <div class="glass-card rounded-xl overflow-hidden shadow-lg" data-aos="fade-up"
+                        data-aos-delay="100">
+                        <div class="relative group">
+                            <img src="Asset/KlinikKecantikan.gif" alt="Zidan Kitchen Project"
+                                class="w-full h-64 sm:h-72 object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                                <div class="p-4">
+                                    <div class="flex gap-3 mb-2">
+                                        <a href="https://zidankitchen.netlify.app/" target="_blank"
+                                            class="text-accent hover:text-white transition-colors">
+                                            <i class="fas fa-external-link-alt"></i>
+                                        </a>
+                                        <a href="https://github.com/zidanfadla/ZidanKitchen" target="_blank"
+                                            class="text-accent hover:text-white transition-colors">
+                                            <i class="fab fa-github"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-display font-bold mb-2 gradient-text">Azra Klinik</h3>
+                            <p class="text-gray-400 mb-4 text-sm sm:text-base">Website Klinik Kecantikan dengan Fitur
+                                Product, Treatment, Booking Treatment, Promo.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span
+                                    class="px-2 py-1 text-xs bg-secondary border border-accent/30 rounded-full text-accent">HTML</span>
+                                <span
+                                    class="px-2 py-1 text-xs bg-secondary border border-accent/30 rounded-full text-accent">CSS</span>
+                                <span
+                                    class="px-2 py-1 text-xs bg-secondary border border-accent/30 rounded-full text-accent">JavaScript</span>
+                                <span
+                                    class="px-2 py-1 text-xs bg-secondary border border-accent/30 rounded-full text-accent">PHP</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Proyek 3 (Figma Design dengan Embed) -->
+                    <div class="glass-card rounded-xl overflow-hidden shadow-lg" data-aos="fade-up"
+                        data-aos-delay="300">
+                        <div class="relative group">
+                            <div class="w-full h-64 sm:h-72 overflow-hidden">
+                                <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="100%" height="100%"
+                                    src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FVRzAe8JQGHEm8UrvequcF1%2FZidanFadla%3Ftype%3Ddesign%26node-id%3D0-1%26mode%3Ddesign"
+                                    allowfullscreen loading="lazy">
+                                </iframe>
+                            </div>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                                <div class="p-4">
+                                    <div class="flex gap-3 mb-2">
+                                        <a href="https://www.figma.com/file/VRzAe8JQGHEm8UrvequcF1/ZidanFadla?type=design&node-id=0-1&mode=design"
+                                            target="_blank" class="text-accent hover:text-white transition-colors">
+                                            <i class="fab fa-figma"></i>
+                                        </a>
+                                        <a href="https://www.behance.net/zidanfadla" target="_blank"
+                                            class="text-accent hover:text-white transition-colors">
+                                            <i class="fab fa-behance"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-display font-bold mb-2 gradient-text">UI/UX Portfolio</h3>
+                            <p class="text-gray-400 mb-4 text-sm sm:text-base">Koleksi desain UI/UX untuk berbagai
+                                aplikasi dan website, termasuk wireframe, prototype, dan user flow.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span
+                                    class="px-2 py-1 text-xs bg-secondary border border-accent/30 rounded-full text-accent">Figma</span>
+                                <span
+                                    class="px-2 py-1 text-xs bg-secondary border border-accent/30 rounded-full text-accent">Prototyping</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Proyek 4 (Figma Design dengan Embed) -->
+                    <div class="glass-card rounded-xl overflow-hidden shadow-lg" data-aos="fade-up"
+                        data-aos-delay="300">
+                        <div class="relative group">
+                            <div class="w-full h-64 sm:h-72 overflow-hidden">
+                                <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450"
+                                    src="https://embed.figma.com/design/1Px2000jzS9AkG6A23IQ81/clinics-patients-management-and-dashboard.--Community-?node-id=0-1&embed-host=share"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                                <div class="p-4">
+                                    <div class="flex gap-3 mb-2">
+                                        <a href="https://www.figma.com/file/VRzAe8JQGHEm8UrvequcF1/ZidanFadla?type=design&node-id=0-1&mode=design"
+                                            target="_blank" class="text-accent hover:text-white transition-colors">
+                                            <i class="fab fa-figma"></i>
+                                        </a>
+                                        <a href="https://www.behance.net/zidanfadla" target="_blank"
+                                            class="text-accent hover:text-white transition-colors">
+                                            <i class="fab fa-behance"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-display font-bold mb-2 gradient-text">UI/UX Portfolio</h3>
+                            <p class="text-gray-400 mb-4 text-sm sm:text-base">Koleksi desain UI/UX untuk berbagai
+                                aplikasi dan website, termasuk wireframe, prototype, dan user flow.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span
+                                    class="px-2 py-1 text-xs bg-secondary border border-accent/30 rounded-full text-accent">Figma</span>
+                                <span
+                                    class="px-2 py-1 text-xs bg-secondary border border-accent/30 rounded-full text-accent">Prototyping</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <!-- Tombol Lihat Lebih Banyak -->
+                <div class="text-center mt-12" data-aos="fade-up">
+                    <a href="https://github.com/zidanfadl" target="_blank"
+                        class="px-8 py-3 border border-accent text-accent font-bold rounded-md hover:bg-accent hover:text-primary transition-all transform hover:scale-105 hover:shadow-lg hover:shadow-accent/20 inline-flex items-center">
+                        <i class="fab fa-github mr-2"></i> Lihat Lebih Banyak di GitHub
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- SERTIFIKAT -->
+
+
+        <section id="sertifikat" class="p-6 my-12 section-min-height relative">
+            <div class="absolute -right-20 top-40 w-64 h-64 bg-accent opacity-5 rounded-full blur-3xl"></div>
+            <div class="absolute -left-20 bottom-20 w-64 h-64 bg-blue-400 opacity-5 rounded-full blur-3xl"></div>
+
+            <div class="relative">
+                <div class="flex items-center mb-12" data-aos="fade-right">
+                    <span class="text-accent font-mono text-lg mr-4">03.</span>
+                    <h2 class="text-4xl font-display font-bold sm:text-5xl text-gray-100">Sertifikat</h2>
+                    <div class="h-px flex-grow bg-gray-700 ml-4"></div>
+                </div>
+
+                <div class="max-w-7xl mx-auto">
+                    <div class="text-center mb-12" data-aos="fade-up">
+                        <p class="text-xl text-gray-400">Kualifikasi dan pencapaian yang telah saya raih</p>
+                    </div>
+
+                    <!-- Grid Sertifikat (3 per baris) -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" data-aos="fade-up">
+                        <!-- Sertifikat 1 -->
+                        <div class="glass-card rounded-xl overflow-hidden h-full">
+                            <div class="relative group">
+                                <img src="Asset/UIUX_Neotic_2023.jpg" alt="Sertifikat 1"
+                                    class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105">
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <a href="Asset/UIUX_Neotic_2023.jpg"
+                                        class="px-4 py-2 bg-accent text-primary font-bold rounded-md transform hover:scale-105 transition-all">
+                                        <i class="fas fa-eye mr-2"></i> Lihat Detail
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <div class="flex justify-between items-start mb-4">
+                                    <h3 class="text-xl font-display font-bold gradient-text">UI / UX Design</h3>
+                                    <div class="tech-border p-2 rounded-full">
+                                        <i class="fab fa-figma text-accent text-xl"></i>
+                                    </div>
+                                </div>
+                                <p class="text-gray-400 mb-4">Sertifikasi desain antarmuka pengguna dan
+                                    pengalaman pengguna dengan Figma.</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm text-gray-500">Neotic Course ID</span>
+                                    <span class="text-sm text-accent">2023</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sertifikat 2 -->
+                        <div class="glass-card rounded-xl overflow-hidden h-full">
+                            <div class="relative group">
+                                <img src="Asset/FE_Neotic_2024.png" alt="Sertifikat 2"
+                                    class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105">
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <a href="Asset/FE_Neotic_2024.png"
+                                        class="px-4 py-2 bg-accent text-primary font-bold rounded-md transform hover:scale-105 transition-all">
+                                        <i class="fas fa-eye mr-2"></i> Lihat Detail
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <div class="flex justify-between items-start mb-4">
+                                    <h3 class="text-xl font-display font-bold gradient-text">FrontEnd Developer</h3>
+                                    <div class="tech-border p-2 rounded-full">
+                                        <i class="fab fa-js text-accent text-xl"></i>
+                                    </div>
+                                </div>
+                                <p class="text-gray-400 mb-4">Sertifikasi pengembangan web front-end dengan fokus pada
+                                    HTML, CSS, dan JavaScript.</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm text-gray-500">Neotic Course ID</span>
+                                    <span class="text-sm text-accent">2024</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sertifikat 3 -->
+                        <div class="glass-card rounded-xl overflow-hidden h-full">
+                            <div class="relative group">
+                                <img src="Asset/BE_Neotic_2024.png" alt="Sertifikat 3"
+                                    class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105">
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <a href="Asset/BE_Neotic_2024.png"
+                                        class="px-4 py-2 bg-accent text-primary font-bold rounded-md transform hover:scale-105 transition-all">
+                                        <i class="fas fa-eye mr-2"></i> Lihat Detail
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <div class="flex justify-between items-start mb-4">
+                                    <h3 class="text-xl font-display font-bold gradient-text">BackEnd Developer</h3>
+                                    <div class="tech-border p-2 rounded-full">
+                                        <i class="fab fa-node-js text-accent text-xl"></i>
+                                    </div>
+                                </div>
+                                <p class="text-gray-400 mb-4">Sertifikasi pengembangan Website Backend.</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm text-gray-500">Neotic Course ID</span>
+                                    <span class="text-sm text-accent">2024</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sertifikat 4 -->
+                        <div class="glass-card rounded-xl overflow-hidden h-full">
+                            <div class="relative group">
+                                <img src="Asset/SE_RevoU_2024.jpg" alt="Sertifikat 4"
+                                    class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105">
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <a href="Asset/SE_RevoU_2024.jpg"
+                                        class="px-4 py-2 bg-accent text-primary font-bold rounded-md transform hover:scale-105 transition-all">
+                                        <i class="fas fa-eye mr-2"></i> Lihat Detail
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <div class="flex justify-between items-start mb-4">
+                                    <h3 class="text-xl font-display font-bold gradient-text">Software Engineering</h3>
+                                    <div class="tech-border p-2 rounded-full">
+                                        <i class="fas fa-code text-accent text-xl"></i>
+                                    </div>
+                                </div>
+                                <p class="text-gray-400 mb-4">Sertifikasi pengembangan perangkat lunak dan praktik
+                                    rekayasa.</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm text-gray-500">RevoU</span>
+                                    <span class="text-sm text-accent">2024</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sertifikat 5 -->
+                        <div class="glass-card rounded-xl overflow-hidden h-full">
+                            <div class="relative group">
+                                <img src="Asset/Dibimbing_FE.jpeg" alt="Sertifikat 6"
+                                    class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105">
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <a href="Asset/Dibimbing_FE.jpeg"
+                                        class="px-4 py-2 bg-accent text-primary font-bold rounded-md transform hover:scale-105 transition-all">
+                                        <i class="fas fa-eye mr-2"></i> Lihat Detail
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <div class="flex justify-between items-start mb-4">
+                                    <h3 class="text-xl font-display font-bold gradient-text">FrontEnd Developer</h3>
+                                    <div class="tech-border p-2 rounded-full">
+                                        <i class="fas fa-certificate text-accent text-xl"></i>
+                                    </div>
+                                </div>
+                                <p class="text-gray-400 mb-4">Sertifikasi Pengembangan Website dengan Bahasa Pemrograman
+                                    HTML, CSS.</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm text-gray-500">Dimbing.id</span>
+                                    <span class="text-sm text-accent">2024</span>
+                                </div>
+                            </div>
+
+
+                            <!-- Sertifikat 6 -->
+                        </div>
+                        <div class="glass-card rounded-xl overflow-hidden h-full">
+                            <div class="relative group">
+                                <img src="Asset/KPU_Magang.jpg" alt="Sertifikat 5"
+                                    class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105">
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <a href="Asset/KPU_Magang.jpg"
+                                        class="px-4 py-2 bg-accent text-primary font-bold rounded-md transform hover:scale-105 transition-all">
+                                        <i class="fas fa-eye mr-2"></i> Lihat Detail
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <div class="flex justify-between items-start mb-4">
+                                    <h3 class="text-xl font-display font-bold gradient-text">Magang KPU</h3>
+                                    <div class="tech-border p-2 rounded-full">
+                                        <i class="fas fa-building text-accent text-xl"></i>
+                                    </div>
+                                </div>
+                                <p class="text-gray-400 mb-4">Sertifikat magang di Komisi Pemilihan Umum.</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm text-gray-500">KPU</span>
+                                    <span class="text-sm text-accent">2023</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- KONTAK -->
+
+        <section id="kontak" class="p-6 my-12 section-min-height flex flex-col justify-center items-center">
+            <h2 class="text-4xl font-bold text-center sm:text-5xl mb-8 text-accent">Hubungi Saya</h2>
+            <p class="text-xl text-center mb-8">Saya tertarik dengan kesempatan baru. Mari terhubung!</p>
+            <div class="flex justify-center gap-8">
+                <a href="https://instagram.com/zidanfadla_"
+                    class="text-5xl hover:text-accent transition-transform transform hover:scale-110" target="_blank"
+                    aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://wa.me/6285157778099"
+                    class="text-5xl hover:text-accent transition-transform transform hover:scale-110" target="_blank"
+                    aria-label="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://linkedin.com/in/zidan-fadla"
+                    class="text-5xl hover:text-accent transition-transform transform hover:scale-110" target="_blank"
+                    aria-label="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer class="bg-primary bg-opacity-60 backdrop-blur-lg border-t border-accent/20 py-8 relative">
+        <div class="cyber-grid absolute inset-0 z-0 opacity-10"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h2 class="text-2xl font-display font-bold gradient-text">Zidan Fadla<span
+                            class="text-accent">.</span></h2>
+                    <p class="text-gray-400 mt-2">Membangun pengalaman digital yang bermakna</p>
+                </div>
+
+                <div class="flex flex-col items-center md:items-end">
+                    <p class="text-gray-400 mb-2">&copy; 2024 Zidan Fadla Ahfandani. All rights reserved.</p>
+                    <div class="flex space-x-4 mt-2">
+                        <a href="#" class="text-gray-400 hover:text-accent transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-accent transition-colors">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-accent transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-accent transition-colors">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Inisialisasi AOS
+            AOS.init();
+
+            // Inisialisasi Particles.js
+            particlesJS("particles-js", {
+                "particles": {
+                    "number": {
+                        "value": 80,
+                        "density": {
+                            "enable": true,
+                            "value_area": 800
+                        }
+                    },
+                    "color": {
+                        "value": "#64ffda"
+                    },
+                    "shape": {
+                        "type": "circle",
+                        "stroke": {
+                            "width": 0,
+                            "color": "#000000"
+                        },
+                        "polygon": {
+                            "nb_sides": 5
+                        }
+                    },
+                    "opacity": {
+                        "value": 0.3,
+                        "random": true,
+                        "anim": {
+                            "enable": true,
+                            "speed": 1,
+                            "opacity_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "size": {
+                        "value": 3,
+                        "random": true,
+                        "anim": {
+                            "enable": true,
+                            "speed": 2,
+                            "size_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "line_linked": {
+                        "enable": true,
+                        "distance": 150,
+                        "color": "#64ffda",
+                        "opacity": 0.2,
+                        "width": 1
+                    },
+                    "move": {
+                        "enable": true,
+                        "speed": 1,
+                        "direction": "none",
+                        "random": true,
+                        "straight": false,
+                        "out_mode": "out",
+                        "bounce": false,
+                        "attract": {
+                            "enable": false,
+                            "rotateX": 600,
+                            "rotateY": 1200
+                        }
+                    }
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": {
+                        "onhover": {
+                            "enable": true,
+                            "mode": "grab"
+                        },
+                        "onclick": {
+                            "enable": true,
+                            "mode": "push"
+                        },
+                        "resize": true
+                    },
+                    "modes": {
+                        "grab": {
+                            "distance": 140,
+                            "line_linked": {
+                                "opacity": 0.5
+                            }
+                        },
+                        "bubble": {
+                            "distance": 400,
+                            "size": 40,
+                            "duration": 2,
+                            "opacity": 8,
+                            "speed": 3
+                        },
+                        "repulse": {
+                            "distance": 200,
+                            "duration": 0.4
+                        },
+                        "push": {
+                            "particles_nb": 4
+                        },
+                        "remove": {
+                            "particles_nb": 2
+                        }
+                    }
+                },
+                "retina_detect": true
+            });
+
+            // Mobile menu
+            const initApp = () => {
+                const mobileMenuBtn = document.getElementById('mobile-menu-button');
+                const mobileMenu = document.getElementById('mobile-menu');
+                const mobileLinks = document.querySelectorAll('#mobile-menu a');
+
+                const toggleMenu = () => {
+                    mobileMenu.classList.toggle('hidden');
+                    mobileMenu.classList.contains('hidden')
+                        ? mobileMenuBtn.textContent = '☰'
+                        : mobileMenuBtn.textContent = '✕';
+                };
+
+                mobileMenuBtn.addEventListener('click', toggleMenu);
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (!mobileMenu.classList.contains('hidden')) {
+                            toggleMenu();
+                        }
+                    });
+                });
+            };
+
+            initApp();
+
+            // Efek typing
+            const typingText = document.querySelector('.typing-text');
+            const typingCursor = document.querySelector('.typing-cursor');
+            const texts = ['Web Developer', 'UI/UX Designer', 'Problem Solver'];
+            let textIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+
+            function type() {
+                const currentText = texts[textIndex];
+
+                if (isDeleting) {
+                    typingText.textContent = currentText.substring(0, charIndex - 1);
+                    charIndex--;
+                } else {
+                    typingText.textContent = currentText.substring(0, charIndex + 1);
+                    charIndex++;
+                }
+
+                // Efek cursor berkedip
+                typingCursor.classList.toggle('opacity-0');
+
+                if (!isDeleting && charIndex === currentText.length) {
+                    isDeleting = true;
+                    setTimeout(type, 1500);
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    textIndex = (textIndex + 1) % texts.length;
+                    setTimeout(type, 500);
+                } else {
+                    setTimeout(type, isDeleting ? 50 : 100);
+                }
+            }
+
+            setTimeout(type, 1000);
+
+            // Animasi smooth scroll
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Animasi counter untuk statistik
+            const counters = document.querySelectorAll('.counter');
+
+            const startCounters = () => {
+                counters.forEach(counter => {
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    const count = +counter.innerText;
+                    const increment = target / 100;
+
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + increment);
+                        setTimeout(() => startCounters(), 30);
+                    } else {
+                        counter.innerText = target;
+                    }
+                });
+            };
+
+            // Mulai counter ketika section terlihat
+            const certificateSection = document.getElementById('sertifikat');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        startCounters();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            if (certificateSection) {
+                observer.observe(certificateSection);
+            }
+        });
+    </script>
+    <script>
+        // Fungsi untuk memperbaiki iframe Figma yang tidak muncul
+        function checkIframes() {
+            const iframes = document.querySelectorAll('iframe');
+            iframes.forEach(iframe => {
+                if (iframe.src.includes('figma.com')) {
+                    // Coba reload iframe jika kosong
+                    iframe.onload = function () {
+                        if (iframe.contentDocument && iframe.contentDocument.body.innerHTML === '') {
+                            iframe.src = iframe.src;
+                        }
+                    };
+
+                    // Tambahkan fallback image jika iframe gagal dimuat
+                    iframe.onerror = function () {
+                        const parent = iframe.parentElement;
+                        const img = document.createElement('img');
+                        img.src = 'Asset/FigmaDesign.jpg';
+                        img.alt = 'Figma Design Preview';
+                        img.className = iframe.className;
+                        parent.replaceChild(img, iframe);
+                    };
+                }
+            });
+        }
+
+        // Jalankan fungsi setelah halaman dimuat
+        window.addEventListener('load', checkIframes);
+
+        // Jalankan fungsi lagi setelah 3 detik (untuk memastikan)
+        setTimeout(checkIframes, 3000);
+    </script>
+</body>
+
+</html>
